@@ -1,164 +1,13 @@
-// ==================== NAVIGATION ==================== 
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
-
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
-
-// Close menu when clicking on a link
-navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    });
-});
-
-// ==================== NAVBAR SCROLL EFFECT ====================
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-        navbar.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.4)';
-    } else {
-        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-        navbar.style.boxShadow = 'none';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// ==================== SMOOTH SCROLL ====================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// ==================== SCROLL ANIMATIONS ====================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe all cards and sections
-const animateElements = document.querySelectorAll(
-    '.about-card, .objective-item, .timeline-item, .house-card, .prize-card, .tier-card, .infra-item, .role-card'
-);
-
-animateElements.forEach((el, index) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-    observer.observe(el);
-});
-
-// ==================== FORM HANDLING ====================
-const updatesForm = document.getElementById('updatesForm');
-
-if (updatesForm) {
-    updatesForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = updatesForm.querySelector('input[type="email"]').value;
-        
-        // Here you would typically send this to a backend
-        // For now, we'll just show an alert
-        alert(`Thank you for joining! We'll send updates to ${email}`);
-        updatesForm.reset();
-    });
-}
-
-// ==================== CURSOR EFFECT (Optional Enhancement) ====================
-const cursor = document.createElement('div');
-cursor.classList.add('custom-cursor');
-document.body.appendChild(cursor);
-
-let mouseX = 0;
-let mouseY = 0;
-let cursorX = 0;
-let cursorY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-function animateCursor() {
-    const speed = 0.15;
-    cursorX += (mouseX - cursorX) * speed;
-    cursorY += (mouseY - cursorY) * speed;
-    
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    
-    requestAnimationFrame(animateCursor);
-}
-
-// Only enable custom cursor on non-touch devices
-if (window.matchMedia('(pointer: fine)').matches) {
-    cursor.style.cssText = `
-        position: fixed;
-        width: 20px;
-        height: 20px;
-        border: 2px solid #c9a961;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.7;
-        transition: transform 0.2s ease;
-    `;
-    animateCursor();
-    
-    // Scale cursor on hover over interactive elements
-    document.querySelectorAll('a, button, .btn').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(1.5)';
-            cursor.style.borderColor = '#d4af37';
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            cursor.style.borderColor = '#c9a961';
-        });
-    });
-} else {
-    cursor.style.display = 'none';
-}
-
-// ==================== COUNTDOWN TIMER (Optional) ====================
-function createCountdown(targetDate, elementId) {
-    const countdownElement = document.getElementById(elementId);
-    
-    if (!countdownElement) return;
+// Countdown Timer
+function initCountdown() {
+    const eventDate = new Date('2026-03-28T14:00:00').getTime();
     
     function updateCountdown() {
         const now = new Date().getTime();
-        const distance = targetDate - now;
+        const distance = eventDate - now;
         
         if (distance < 0) {
-            countdownElement.innerHTML = "Event has started!";
+            document.getElementById('countdown').innerHTML = '<div class="countdown-ended">The War Has Begun!</div>';
             return;
         }
         
@@ -167,102 +16,383 @@ function createCountdown(targetDate, elementId) {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
-        countdownElement.innerHTML = `
-            <div class="countdown-timer">
-                <div class="countdown-item">
-                    <span class="countdown-number">${days}</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number">${hours}</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number">${minutes}</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number">${seconds}</span>
-                    <span class="countdown-label">Seconds</span>
-                </div>
-            </div>
-        `;
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
     }
     
     updateCountdown();
     setInterval(updateCountdown, 1000);
 }
 
-// Example: To add countdown, uncomment and set your target date
- const eventDate = new Date('March 28, 2026 14:00:00').getTime();
-createCountdown(eventDate, 'countdown');
-
-// ==================== PARALLAX EFFECT ====================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-content');
+// Snow Effect
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+    snowflake.textContent = '❄';
+    snowflake.style.left = Math.random() * 100 + '%';
+    snowflake.style.animationDuration = Math.random() * 10 + 10 + 's';
+    snowflake.style.opacity = Math.random() * 0.5 + 0.1;
+    snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
     
-    parallaxElements.forEach(el => {
-        const speed = 0.5;
-        el.style.transform = `translateY(${scrolled * speed}px)`;
+    document.getElementById('snowContainer').appendChild(snowflake);
+    
+    setTimeout(() => {
+        snowflake.remove();
+    }, 20000);
+}
+
+function initSnow() {
+    // Create initial snowflakes
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => createSnowflake(), i * 500);
+    }
+    
+    // Continue creating snowflakes
+    setInterval(createSnowflake, 1500);
+}
+
+// Scroll Animations (Simple AOS-like)
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('[data-aos]').forEach(el => {
+        observer.observe(el);
     });
-});
+}
 
-// ==================== LOADING ANIMATION ====================
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
-
-// ==================== CONSOLE MESSAGE ====================
-console.log(`
-╔═══════════════════════════════════════════════════════════╗
-║                                                           ║
-║              TH3_RANG3RS - National CTF                  ║
-║                                                           ║
-║         "Only the sharpest minds survive"                ║
-║                                                           ║
-║      Interested in the code? We like your style.         ║
-║      This could be your arena. Register now!             ║
-║                                                           ║
-╚═══════════════════════════════════════════════════════════╝
-`);
-
-// ==================== KEYBOARD SHORTCUTS ====================
-document.addEventListener('keydown', (e) => {
-    // Press 'R' to scroll to registration
-    if (e.key === 'r' || e.key === 'R') {
-        if (!e.target.matches('input, textarea')) {
-            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+// Navigation Scroll Effect
+function initNavigation() {
+    const nav = document.getElementById('mainNav');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    // Scroll effect
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
         }
+        
+        lastScroll = currentScroll;
+    });
+    
+    // Mobile menu toggle
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
+    
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            navToggle.classList.remove('active');
+        });
+    });
+}
+
+// Register Button Alert
+function initRegisterButtons() {
+    const registerBtns = document.querySelectorAll('#registerBtn, #registerBtn2');
+    
+    registerBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            alert('Registration opens soon! Stay tuned for updates.\n\nFor inquiries, contact: th3rang3rs.nfsu@gmail.com');
+        });
+    });
+}
+
+// Smooth Scroll Enhancement
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Parallax Effect for Hero
+function initParallax() {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero-bg-layer');
+        
+        parallaxElements.forEach(el => {
+            el.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    });
+}
+
+// Cursor Trail Effect (Optional - adds atmosphere)
+function initCursorTrail() {
+    let mouseX = 0, mouseY = 0;
+    let trailX = 0, trailY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    
+    // Create subtle cursor glow (optional enhancement)
+    const cursorGlow = document.createElement('div');
+    cursorGlow.style.cssText = `
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(201, 169, 97, 0.3) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.15s ease;
+    `;
+    document.body.appendChild(cursorGlow);
+    
+    function animateCursor() {
+        trailX += (mouseX - trailX) * 0.1;
+        trailY += (mouseY - trailY) * 0.1;
+        
+        cursorGlow.style.left = trailX - 10 + 'px';
+        cursorGlow.style.top = trailY - 10 + 'px';
+        
+        requestAnimationFrame(animateCursor);
     }
     
-    // Press 'S' to scroll to sponsors
-    if (e.key === 's' || e.key === 'S') {
-        if (!e.target.matches('input, textarea')) {
-            document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-});
+    animateCursor();
+}
 
-// ==================== DYNAMIC YEAR ====================
-const yearElements = document.querySelectorAll('.current-year');
-yearElements.forEach(el => {
-    el.textContent = new Date().getFullYear();
-});
-
-// ==================== EASTER EGG (Optional Fun) ====================
-let konamiCode = [];
-const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-
-document.addEventListener('keydown', (e) => {
-    konamiCode.push(e.key);
-    konamiCode = konamiCode.slice(-10);
+// Card Tilt Effect on Hover
+function initCardTilt() {
+    const cards = document.querySelectorAll('.house-card, .objective-card, .tier-card');
     
-    if (konamiCode.join(',') === konamiSequence.join(',')) {
-        document.body.style.filter = 'hue-rotate(180deg)';
-        alert('🎮 Secret unlocked! You found the Konami Code! The realm colors have shifted...');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+}
+
+// Add loading screen
+function initLoadingScreen() {
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+        
+        // Start animations after a brief delay
         setTimeout(() => {
-            document.body.style.filter = 'none';
-        }, 5000);
+            initScrollAnimations();
+        }, 100);
+    });
+}
+
+// Easter Egg: Konami Code
+function initEasterEgg() {
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+                activateEasterEgg();
+                konamiIndex = 0;
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+}
+
+function activateEasterEgg() {
+    // Secret message
+    const message = document.createElement('div');
+    message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(10, 10, 10, 0.95);
+        border: 2px solid var(--color-primary);
+        padding: 3rem;
+        z-index: 10000;
+        text-align: center;
+        font-family: var(--font-display);
+        color: var(--color-primary);
+        font-size: 1.5rem;
+        box-shadow: 0 0 50px rgba(201, 169, 97, 0.5);
+    `;
+    message.innerHTML = `
+        <div style="margin-bottom: 1rem; font-size: 3rem;">⚔️</div>
+        <div>A TRUE WARRIOR EMERGES</div>
+        <div style="margin-top: 1rem; font-size: 1rem; color: var(--color-text-secondary);">
+            "Chaos isn't a pit. Chaos is a ladder."
+        </div>
+        <button onclick="this.parentElement.remove()" style="
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: var(--color-primary);
+            color: var(--color-bg-dark);
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        ">Claim Your Glory</button>
+    `;
+    document.body.appendChild(message);
+    
+    // Confetti effect
+    createConfetti();
+}
+
+function createConfetti() {
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.cssText = `
+            position: fixed;
+            top: -10px;
+            left: ${Math.random() * 100}%;
+            width: 10px;
+            height: 10px;
+            background: ${['#c9a961', '#8b0000', '#e5d4a8'][Math.floor(Math.random() * 3)]};
+            animation: confettiFall ${Math.random() * 3 + 2}s linear forwards;
+            z-index: 9999;
+        `;
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => confetti.remove(), 5000);
+    }
+}
+
+// Add confetti animation to CSS dynamically
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes confettiFall {
+        to {
+            transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Performance: Debounce scroll events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Initialize everything when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    initCountdown();
+    initSnow();
+    initNavigation();
+    initRegisterButtons();
+    initSmoothScroll();
+    initParallax();
+    initCursorTrail();
+    initCardTilt();
+    initLoadingScreen();
+    initEasterEgg();
+    
+    // Add scroll reveal for elements not in viewport
+    setTimeout(() => {
+        const elementsToReveal = document.querySelectorAll('[data-aos]');
+        elementsToReveal.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                el.classList.add('aos-animate');
+            }
+        });
+    }, 100);
+});
+
+// Add visual feedback for interactive elements
+document.addEventListener('click', (e) => {
+    if (e.target.matches('button, .cta-primary, .cta-secondary')) {
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            width: 20px;
+            height: 20px;
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+        `;
+        
+        const rect = e.target.getBoundingClientRect();
+        ripple.style.left = e.clientX - rect.left - 10 + 'px';
+        ripple.style.top = e.clientY - rect.top - 10 + 'px';
+        
+        e.target.style.position = 'relative';
+        e.target.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
     }
 });
+
+// Add ripple animation
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(rippleStyle);
+
+// Console Easter Egg
+console.log('%c⚔️ KAALCHAKRA CTF ⚔️', 'font-size: 24px; font-weight: bold; color: #c9a961; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);');
+console.log('%cWinter Is Coming...', 'font-size: 16px; color: #8b0000; font-style: italic;');
+console.log('%cLooking for flags? Try the Konami code... 👀', 'font-size: 12px; color: #a8a8a8;');
+console.log('%c↑ ↑ ↓ ↓ ← → ← → B A', 'font-size: 14px; color: #c9a961; font-weight: bold;');
