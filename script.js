@@ -194,8 +194,8 @@ function createCountdown(targetDate, elementId) {
 }
 
 // Example: To add countdown, uncomment and set your target date
-// const eventDate = new Date('March 21, 2026 00:00:00').getTime();
-// createCountdown(eventDate, 'countdown');
+ const eventDate = new Date('March 28, 2026 14:00:00').getTime();
+createCountdown(eventDate, 'countdown');
 
 // ==================== PARALLAX EFFECT ====================
 window.addEventListener('scroll', () => {
