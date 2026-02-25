@@ -1,6 +1,6 @@
 // Countdown Timer
 function initCountdown() {
-    const eventDate = new Date('2026-03-28T14:00:00').getTime();
+    const eventDate = new Date('2026-03-28T14:30:00+05:30').getTime();
     
     function updateCountdown() {
         const now = new Date().getTime();
@@ -108,13 +108,13 @@ function initNavigation() {
     });
 }
 
-// Register Button Alert
 function initRegisterButtons() {
     const registerBtns = document.querySelectorAll('#registerBtn, #registerBtn2');
-    
+
     registerBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            alert('Registration opens soon! Stay tuned for updates.\n\nFor inquiries, contact: th3rang3rs.nfsu@gmail.com');
+        btn.addEventListener('click', () => {            
+            const googleFormURL = "https://forms.gle/WXpCAKuS7BNV2u5n9";
+            window.open(googleFormURL, '_blank', 'noopener,noreferrer');
         });
     });
 }
@@ -225,8 +225,7 @@ function initLoadingScreen() {
     });
 }
 
-// Easter Egg: Konami Code
-function initEasterEgg() {
+function initConfetti() {
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIndex = 0;
     
@@ -234,7 +233,7 @@ function initEasterEgg() {
         if (e.key === konamiCode[konamiIndex]) {
             konamiIndex++;
             if (konamiIndex === konamiCode.length) {
-                activateEasterEgg();
+                activateConfetti();
                 konamiIndex = 0;
             }
         } else {
@@ -243,7 +242,7 @@ function initEasterEgg() {
     });
 }
 
-function activateEasterEgg() {
+function activateConfetti() {
     // Secret message
     const message = document.createElement('div');
     message.style.cssText = `
@@ -277,7 +276,7 @@ function activateEasterEgg() {
             font-family: var(--font-display);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-        ">Claim Your Glory</button>
+        ">{3AST3R_FL@9}</button>
     `;
     document.body.appendChild(message);
     
@@ -340,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCursorTrail();
     initCardTilt();
     initLoadingScreen();
-    initEasterEgg();
+    initConfetti();
     
     // Add scroll reveal for elements not in viewport
     setTimeout(() => {
@@ -352,6 +351,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, 100);
+});
+
+let lastScrollTop = 0;
+const navbar = document.querySelector('.nav');
+
+window.addEventListener('scroll', function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+        // Scroll Down
+        navbar.style.top = "-120px"; 
+    } else {
+        // Scroll Up
+        navbar.style.top = "0";
+    }
+
+    lastScrollTop = scrollTop;
 });
 
 // Add visual feedback for interactive elements
@@ -391,8 +407,7 @@ rippleStyle.textContent = `
 `;
 document.head.appendChild(rippleStyle);
 
-// Console Easter Egg
+
 console.log('%c⚔️ KAALCHAKRA CTF ⚔️', 'font-size: 24px; font-weight: bold; color: #c9a961; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);');
 console.log('%cWinter Is Coming...', 'font-size: 16px; color: #8b0000; font-style: italic;');
-console.log('%cLooking for flags? Try the Konami code... 👀', 'font-size: 12px; color: #a8a8a8;');
-console.log('%c↑ ↑ ↓ ↓ ← → ← → B A', 'font-size: 14px; color: #c9a961; font-weight: bold;');
+console.log('%cLooking for flags? Try the Konami Code... 👀', 'font-size: 12px; color: #a8a8a8;');
