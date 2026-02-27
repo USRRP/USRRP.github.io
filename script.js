@@ -226,18 +226,18 @@ function initLoadingScreen() {
 }
 
 function initConfetti() {
-    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    let konamiIndex = 0;
+    const contra = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let contraIndex = 0;
     
     document.addEventListener('keydown', (e) => {
-        if (e.key === konamiCode[konamiIndex]) {
-            konamiIndex++;
-            if (konamiIndex === konamiCode.length) {
+        if (e.key === contra[contraIndex]) {
+            contraIndex++;
+            if (contraIndex === contra.length) {
                 activateConfetti();
-                konamiIndex = 0;
+                contraIndex = 0;
             }
         } else {
-            konamiIndex = 0;
+            contraIndex = 0;
         }
     });
 }
