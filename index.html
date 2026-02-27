@@ -3,12 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAALCHAKRA - National Level CTF | Winter Is Coming</title>
-    <meta name="description" content="National Level Cyber Security CTF by NFSU Goa. Forge your legacy in the battlefield of cyber warfare. March 28 - April 11, 2026.">
+    <title>KAALCHAKRA - National Level Cyber Security CTF | NFSU Goa</title>
+    <meta name="description" content="KAALCHAKRA 2026 is a National Level Cyber Security Capture The Flag (CTF) competition organized by National Forensic Sciences University Goa x TH3_RANG3RS. Join India's biggest cybersecurity battlefield. March 28 - April 11, 2026.">
+    
+    <meta property="og:title" content="KAALCHAKRA 2026 | National Level CTF | NFSU Goa">
+    <meta property="og:description" content="KAALCHAKRA 2026 is a National Level Cyber Security Capture The Flag (CTF) competition organized by National Forensic Sciences University Goa x TH3_RANG3RS. Join India's biggest cybersecurity battlefield. March 28 - April 11, 2026.">
+    <meta property="og:image" content="https://kaalchakractf.com/images/CTF_Logo.png">
+    <meta property="og:url" content="https://kaalchakractf.com">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KAALCHAKRA 2026 - National CTF">
+    <meta name="twitter:description" content="India's premier National Level Cyber Security CTF by NFSU Goa.">
+    <meta name="twitter:image" content="https://kaalchakractf.com/images/CTF_Logo.png">
+<!-- Favicon -->
+    <link rel="icon" href="images/CTF_Logo.png" type="image/png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kaalchakractf.com/">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "KAALCHAKRA National Level CTF 2026",
+  "startDate": "2026-03-28T10:30+05:30",
+  "endDate": "2026-04-11T17:00+05:30",
+  "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "National Forensic Sciences University, Goa",
+    "address": "Goa, India"
+  }
+},
+"organizer": {
+    "@type": "Organization",
+    "name": "NFSU GOA",
+    "url": "https://kaalchakractf.com"
+  }
+}
+</script>
+
 </head>
 <body>
     <!-- Atmospheric Background Effects -->
@@ -19,7 +59,7 @@
     <nav class="nav" id="mainNav">
         <div class="nav-content">
             <div class="nav-logo">
-                <img src="emblem.png" alt="NFSU Logo" style="height:80px; width:auto; margin-bottom:0.25rem;">
+                <img src="images/emblem.png" alt="NFSU Logo" loading="lazy" style="height:80px; width:auto; margin-bottom:0.25rem;">
             </div>
             <div class="nav-links">
                 <a href="#about">The Realm</a>
@@ -45,7 +85,7 @@
                 <div class="emblem-outer">
                     <div class="emblem-inner">
                         <div class="emblem-center">
-                            <img src="CTF_Logo.png" alt="Kaalchakra CTF Logo" style="max-width:350px; height:350px;">
+                            <img src="images/CTF_Logo.png" alt="Kaalchakra CTF Logo" fetchpriority="high" style="max-width:350px; height:350px;">
                         </div>
                     </div>
                 </div>
@@ -100,8 +140,8 @@
 
             <div class="hero-cta" data-aos="fade-up" data-aos-delay="800">
                 <button class="cta-primary" id="registerBtn">
-                    <span><a href="https://forms.gle/WXpCAKuS7BNV2u5n9">Register Now</a></span>
-                    <div class="cta-shine"></div>
+                <a href="https://forms.gle/WXpCAKuS7BNV2u5n9" class="cta-primary" target="_blank" rel="noopener noreferrer" onclick="gtag('event','register_click');"> Register Now </a>
+                <div class="cta-shine"></div>
                 </button>
                 <button class="cta-secondary" onclick="document.getElementById('sponsors').scrollIntoView({behavior: 'smooth'})">
                     <span>Sponsor the War</span>
@@ -111,17 +151,17 @@
             <div class="hero-details" data-aos="fade-up" data-aos-delay="900">
                 <div class="detail-item">
                     <span class="detail-icon">📅</span>
-                    <span class="detail-text">March 28 - April 11, 2026</span>
+                    <span class="detail-text"><b>March 28 & April 11, 2026</b></span>
                 </div>
                 <div class="detail-separator">|</div>
                 <div class="detail-item">
                     <span class="detail-icon">👥</span>
-                    <span class="detail-text">3 Warriors Per Team</span>
+                    <span class="detail-text"><b>3 Warriors Per Team</b></span>
                 </div>
                 <div class="detail-separator">|</div>
                 <div class="detail-item">
                     <span class="detail-icon">💰</span>
-                    <span class="detail-text">₹300 Entry Fee</span>
+                    <span class="detail-text"><b>₹300 Entry Fee</b></span>
                 </div>
             </div>
         </div>
@@ -187,12 +227,7 @@
                 <div class="about-content" data-aos="fade-right">
                     <h3 class="about-heading">Eligibility</h3>
                     <ul class="about-text">
-                        <li>The competition is open to all UG and PG students currently enrolled in recognized Indian institutions. However, for students of NFSU Goa Campus, participation is limited to the following programs:</li>
-                        <li>B.Sc.–M.Sc. Forensic Science (Integrated) – All semesters</li>
-                        <li>M.Sc. Forensic Science – All semesters</li>
-                        <li>M.Sc. Cyber Security – Semester 2</li>
-                        <li>M.Sc. DFIS (Digital Forensic &amp; Information Security) – Semester 2</li>
-                        <li>M.Tech AIDS – Semester 2</li>
+                        <li>The competition is open to all UG and PG students currently enrolled in recognized Indian institutions. However, For students of the NFSU Goa Campus, participation is open to all academic programs except students belonging to the 2024–2026 batch.</li>
                         <li>Participants must register as a team of 1 to 3 members.</li>
                         <li>Each participant must be part of only one team; no substitutions are allowed once the registration has been done.</li>
                         <li>Valid College ID cards are mandatory for all participating teams.</li>
@@ -200,9 +235,9 @@
 
                     <h3 class="about-heading">Registration &amp; Support</h3>
                     <ul class="about-text">
-                        <li>Registration will only be considered complete only after filling the <a href="https://forms.gle/WXpCAKuS7BNV2u5n9"> Google Form </a> </li>
-                        <li>Registration Fees Rs. 300/- must be paid via the link provided in Google Form. Failing which registration will not be recognised.</li>
-                        <li>The official <a href="https://discord.gg/fpJQnfNv">Discord server</a> is the primary channel for all announcements and technical support.</li>
+                        <li>Registration will only be considered complete only after filling the <a href="https://forms.gle/WXpCAKuS7BNV2u5n9"> <b> G-Form. </b> </a> </li>
+                        <li>Registration Fees Rs. 300/- (excluding taxes) must be paid via the link provided in Google Form. Failing which registration will not be recognised.</li>
+                        <li>The official <a href="https://discord.gg/q4Pam5h3Bd"><b>Discord server</b></a> is the primary channel for all announcements and technical support.</li>
                         <li>Support requests must be raised via the designated ticket system; personal messages (DMs) to organizers are strictly prohibited.</li>
                         <li>By registering, you consent to the collection and use of personal data for verification and event communication.</li>
                     </ul>
@@ -228,7 +263,8 @@
                         <li>Sharing flags or solutions between teams is a major violation and will result in disqualification for all parties involved.</li>
                         <li>Attacks against the scoreboard, registration servers, or event infrastructure (DDoS/DoS) are strictly prohibited.</li>
                         <li>Automated scanners (e.g., SQLMap, DirBuster) and login brute-forcing are not permitted unless explicitly required by a challenge.</li>
-                        <li>The standard flag format is Kaal{s0m3_t3xt_h3r3} unless specified otherwise.</li>
+                        <li>The standard flag format is
+			<span class="flag-format">Kaal{s0m3_t3xt_h3r3}</span></li>
                     </ul>
 
                     <h3 class="about-heading">Accommodation &amp; Travel</h3>
@@ -310,7 +346,7 @@
                             </div>
                             <div class="round-detail">
                                 <span class="detail-label">Time</span>
-                                <span class="detail-value">10:00 AM - 5:00 PM</span>
+                                <span class="detail-value">10:00 AM - 6:00 PM</span>
                             </div>
                             <div class="round-detail">
                                 <span class="detail-label">Format</span>
@@ -473,35 +509,37 @@
                 </p>
             </div>
 
-            <div class="sponsor-tiers">
+ <div class="sponsor-tiers">
                 <div class="tier-card platinum" data-aos="fade-up" data-aos-delay="0">
                     <div class="tier-badge">
                         <div class="badge-glow"></div>
-                        <span>💎 PLATINUM</span>
+                        <span>💠 PLATINUM</span>
                     </div>
                     <div class="tier-amount">₹1,00,000+</div>
                     <div class="tier-benefits">
-                        <div class="benefit-item">✦ Premium logo placement on all materials</div>
-                        <div class="benefit-item">✦ Dedicated challenge category</div>
-                        <div class="benefit-item">✦ On-stage acknowledgment at finals</div>
-                        <div class="benefit-item">✦ Booth space at offline event</div>
-                        <div class="benefit-item">✦ Direct recruitment access to top 25</div>
-                        <div class="benefit-item">✦ Featured in all press releases</div>
+                        <div class="benefit-item">✦ Powered By / Title Rights</div>
+                        <div class="benefit-item">✦ Logo on Screen, Website & Credentials</div>
+                        <div class="benefit-item">✦ Venue Banners</div>
+                        <div class="benefit-item">✦ Exhibition Booth at Finals</div>
+                        <div class="benefit-item">✦ CTF Challenge Partner</div>
+                        <div class="benefit-item">✦ Resume Database Access</div>
+                        <div class="benefit-item">✦ Dedicated Social Posts + Stage Mention</div>
                     </div>
                 </div>
 
                 <div class="tier-card diamond" data-aos="fade-up" data-aos-delay="100">
                     <div class="tier-badge">
                         <div class="badge-glow"></div>
-                        <span>💠 DIAMOND</span>
+                        <span>💎 DIAMOND</span>
                     </div>
                     <div class="tier-amount">₹50,000 - ₹1,00,000</div>
                     <div class="tier-benefits">
-                        <div class="benefit-item">✦ Logo on website, banners & certificates</div>
-                        <div class="benefit-item">✦ Social media feature campaigns</div>
-                        <div class="benefit-item">✦ Challenge framework opportunities</div>
-                        <div class="benefit-item">✦ Demo booth at offline finals</div>
-                        <div class="benefit-item">✦ Resume access to participants</div>
+                        <div class="benefit-item">✦ Logo on Finals Screen & Website</div>
+                        <div class="benefit-item">✦ Certificates & ID Badge Branding</div>
+                        <div class="benefit-item">✦ Venue Banners</div>
+                        <div class="benefit-item">✦ Exhibition Booth at Finals</div>
+                        <div class="benefit-item">✦ Resume Database Access</div>
+                        <div class="benefit-item">✦ Dedicated Social Post + Stage Mention</div>
                     </div>
                 </div>
 
@@ -512,10 +550,11 @@
                     </div>
                     <div class="tier-amount">₹25,000 - ₹50,000</div>
                     <div class="tier-benefits">
-                        <div class="benefit-item">✦ Logo on event materials</div>
-                        <div class="benefit-item">✦ Social media mentions</div>
-                        <div class="benefit-item">✦ Certificate branding</div>
-                        <div class="benefit-item">✦ Talent pool access</div>
+                        <div class="benefit-item">✦ Logo on Website & Event Materials</div>
+                        <div class="benefit-item">✦ Venue Banner</div>
+                        <div class="benefit-item">✦ Resume Database Access</div>
+                        <div class="benefit-item">✦ Branded Swag in Welcome Kits</div>
+                        <div class="benefit-item">✦ Social Media Group Shoutout</div>
                     </div>
                 </div>
 
@@ -526,13 +565,109 @@
                     </div>
                     <div class="tier-amount">Goodies, Vouchers, Swag</div>
                     <div class="tier-benefits">
-                        <div class="benefit-item">✦ Logo visibility</div>
-                        <div class="benefit-item">✦ Social media shoutouts</div>
-                        <div class="benefit-item">✦ Community goodwill</div>
-                        <div class="benefit-item">✦ Brand among cyber enthusiasts</div>
+                        <div class="benefit-item">✦ Logo on Website</div>
+                        <div class="benefit-item">✦ Swag Distribution in Welcome Kits</div>
+                        <div class="benefit-item">✦ Social Media Group Shoutout</div>
                     </div>
                 </div>
             </div>
+
+<!-- Sponsors Section Header -->
+<div class="sponsors-header">
+    <h2 class="sponsors-main-title">Our Sponsors</h2>
+    <p class="sponsors-subtitle">
+        Grateful to these amazing organizations for making Kaalchakra CTF 2026 possible
+    </p>
+</div>
+
+<!-- Sponsors Showcase -->
+<div class="sponsors-showcase">
+
+
+    <!-- Platinum -->
+    <div class="sponsor-tier">
+        <h3 class="tier-title platinum-tier">Platinum</h3>
+        <div class="sponsor-grid platinum-grid">
+            
+            <div class="sponsor-card platinum-card">
+                <img src="images/emblem.png" alt="Sponsor">
+            </div>
+
+            <div class="sponsor-card platinum-card">
+                Sponsor
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Diamond -->
+    <div class="sponsor-tier">
+        <h3 class="tier-title diamond-tier">Diamond</h3>
+        <div class="sponsor-grid">
+
+            <div class="sponsor-card diamond-card">
+                Sponsor
+            </div>
+
+            <div class="sponsor-card diamond-card">
+                Sponsor
+            </div>
+
+            <div class="sponsor-card diamond-card">
+                Sponsor
+            </div>
+        </div>
+    </div>
+
+    <!-- GOLD -->
+    <div class="sponsor-tier">
+        <h3 class="tier-title gold-tier">GOLD</h3>
+        <div class="sponsor-grid">
+
+            <div class="sponsor-card gold-card dark-bg">
+                Sponsor
+            </div>
+
+            <div class="sponsor-card gold-card">
+                Sponsor
+            </div>
+
+            <div class="sponsor-card gold-card">
+                Sponsor
+            </div>
+	    <div class="sponsor-card gold-card">
+                Sponsor
+            </div>
+	    <div class="sponsor-card gold-card">
+                Sponsor
+            </div>
+	    <div class="sponsor-card gold-card">
+                Sponsor
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- IN-KIND -->
+<div class="sponsor-tier">
+    <h3 class="tier-title inkind-tier">IN-KIND PARTNERS</h3>
+
+    <div class="sponsor-grid inkind-grid">
+
+        <div class="sponsor-card inkind-card">
+            Sponsor
+        </div>
+
+        <div class="sponsor-card inkind-card">
+            Sponsor
+        </div>
+
+        <div class="sponsor-card inkind-card">
+            Sponsor
+        </div>
+    </div>
+</div>
 
             <div class="sponsor-cta" data-aos="fade-up">
                 <h3 class="sponsor-cta-title">Why Sponsor KAALCHAKRA?</h3>
@@ -554,11 +689,18 @@
                         <span class="reason-text">Association with prestigious NFSU institution</span>
                     </div>
                 </div>
-                <button class="sponsor-contact-btn" onclick="window.location.href='mailto:th3rang3rs.nfsu@gmail.com?subject=KAALCHAKRA%20Sponsorship%20Inquiry'">
+		<div class="sponsor-btn-group">
+	        <button class="sponsor-brochure-btn"
+        onclick="window.open('https://drive.google.com/file/d/1HUk539ZjnQrKA5CauS29cNZxBizIJ-NF/view', '_blank')">
+        <span>View Brochure</span>
+        <div class="btn-shine"></div>
+    </button>
+                <button class="sponsor-contact-btn" onclick="window.location.href='mailto:harsh.panchal@nfsu.ac.in?subject=KAALCHAKRA%20Sponsorship%20Inquiry'">
                     <span>Become a Sponsor</span>
                     <div class="btn-shine"></div>
                 </button>
             </div>
+	  </div>
         </div>
     </section>
 
@@ -584,10 +726,11 @@
 
                 <div class="contact-actions" data-aos="fade-up" data-aos-delay="200">
                     <button class="action-btn primary-action" id="registerBtn2">
-                        <span><a href="https://forms.gle/WXpCAKuS7BNV2u5n9">Register Now </a></span>
+                        <a href="https://forms.gle/WXpCAKuS7BNV2u5n9" class="cta-primary" target="_blank" rel="noopener noreferrer" onclick="gtag('event','register_click');"> Register Now </a>
+
                         <div class="btn-shine"></div>
                     </button>
-                    <button class="action-btn secondary-action" onclick="window.location.href='mailto:th3rang3rs.nfsu@gmail.com?subject=KAALCHAKRA%20Inquiry'">
+                    <button class="action-btn secondary-action" onclick="window.location.href='mailto:harsh.panchal@nfsu.ac.in?subject=KAALCHAKRA%20Inquiry'">
                         <span>Contact Organizers</span>
                     </button>
                 </div>
@@ -595,7 +738,29 @@
                 
             </div>
         </div>
+<div class="social-links">
+    <a href="https://instagram.com/kaalchakra_ctf" target="_blank" rel="noopener">
+           <img src="icons/instagram.svg" alt="Instagram" class="social-icon">
+
+
+        </svg>
+    </a>
+
+    <a href="https://linkedin.com/in/kaalchakra-ctf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" class="social-icon">
+            <path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.8-3s-2 1.4-2 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.7-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.4v6.2zM5.3 7.4c-1.2 0-2.1-1-2.1-2.2S4.1 3 5.3 3s2.2 1 2.2 2.2-1 2.2-2.2 2.2zM7.1 20.4H3.5V9h3.6v11.4z"/>
+        </svg>
+    </a>
+
+    <a href="https://twitter.com/KaalChakra_CTF" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" class="social-icon">
+            <path d="M18.244 2H21.5l-7.19 8.21L22.5 22h-6.53l-5.11-6.63L4.98 22H1.72l7.7-8.8L1.5 2h6.69l4.62 6.1L18.244 2z"/>
+        </svg>
+    </a>
+</div>
+
     </section>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -611,7 +776,7 @@
             </div>
             <div class="footer-divider"></div>
             <div class="footer-bottom">
-                <p>&copy; 2026 KAALCHAKRA. All rights reserved.</p>
+                <p>&copy; 2026 KAALCHAKRA - NFSU GOA. All rights reserved.</p>
                 <p class="footer-tagline">When you play the game of flags, you win or you die.</p>
             </div>
         </div>
