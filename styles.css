@@ -43,6 +43,10 @@
     --transition-slow: 0.6s ease;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 /* Reset & Base */
 * {
     margin: 0;
@@ -53,6 +57,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    max-width:100%;
 }
 
 body {
@@ -63,6 +68,8 @@ body {
     overflow-x: hidden;
     position: relative;
     padding-top: 150px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 li a {
@@ -597,6 +604,9 @@ button:hover .btn-shine {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .section-header {
@@ -1077,9 +1087,9 @@ button:hover .btn-shine {
 
 .sponsor-tiers {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
+    
 }
 
 .tier-card {
@@ -1089,6 +1099,8 @@ button:hover .btn-shine {
     transition: var(--transition-medium);
     position: relative;
     overflow: hidden;
+    max-width: 100%;
+    
 }
 
 .tier-card::before {
@@ -1137,7 +1149,7 @@ button:hover .btn-shine {
 
 .tier-card.inkind {
     border-color: var(--color-secondary);
-    grid-column: 2;
+    grid-column: auto;
 }
 
 .tier-card.inkind::before {
@@ -1858,6 +1870,7 @@ button:hover .btn-shine {
     transition: all 0.4s ease;
     backdrop-filter: blur(12px);
     height: 200px;
+    overflow: hidden;
 }
 
 
@@ -1870,6 +1883,75 @@ button:hover .btn-shine {
     
 }
 
+
+@media (min-width: 769px) {
+    .sponsor-tiers {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .platinum-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tier-card.inkind {
+        grid-column: 1 / -1;   
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .sponsor-card {
+        height: 200px;
+        padding: 1.5rem;
+    }
+
+    .platinum-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .sponsor-card img {
+        max-width: 90%;
+        max-height: 160px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .platinum-card img {
+        max-width: 95%;
+        max-height: 170px;
+    }
+
+   .sponsor-tiers {
+        grid-template-columns: 1fr !important; 
+    }
+
+   .tier-card {
+        width: 100%;
+        margin: 0 auto;
+	max-width: 100%;
+	box-sizing: border-box;
+    }
+
+    .sponsor-grid {
+        grid-template-columns: 1fr !important;   /* single column for logos */
+    }
+
+     .section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
+
 /* Hover Effects */
 .sponsor-card:hover {
     transform: translateY(-10px);
@@ -1879,9 +1961,6 @@ button:hover .btn-shine {
 
 
 /* Tier Border Colors */
-.platinum-grid {
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-}
 
 .platinum-card {
     padding: 4rem 3rem;          
@@ -1891,3 +1970,4 @@ button:hover .btn-shine {
 .platinum-card { border-color: #c0c0c0; }
 .diamond-card { border-color: #00c8ff; }
 .gold-card { border-color: #c9a961; }
+
