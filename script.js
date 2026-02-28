@@ -395,7 +395,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Add ripple animation
+
 const rippleStyle = document.createElement('style');
 rippleStyle.textContent = `
     @keyframes ripple {
@@ -409,5 +409,4 @@ document.head.appendChild(rippleStyle);
 
 
 console.log('%c⚔️ KAALCHAKRA CTF ⚔️', 'font-size: 24px; font-weight: bold; color: #c9a961; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);');
-console.log('%cWinter Is Coming...', 'font-size: 16px; color: #8b0000; font-style: italic;');
 console.log('%cLooking for flags? Try the Konami Code... 👀', 'font-size: 12px; color: #a8a8a8;');
